@@ -11,18 +11,8 @@ import WithErrorHandler from '../../hoc/WithErrorHandler/WithErrorHandler';
 import axios from '../../axios-orders';
 import * as actionTypes from '../../store/Actions';
 
-// const INGREDIENT_PRICES = {
-//   salad: 0.5,
-//   cheese: 0.4,
-//   meat: 1.3,
-//   bacon: 0.7
-// };
-
 class BurgerBuilder extends Component {
   state = {
-    // ingredients: null,
-    // totalPrice: 4,
-    // purchasable: false,
     purchasing: false,
     loading: false,
     error: false
@@ -30,13 +20,6 @@ class BurgerBuilder extends Component {
 
   componentDidMount () {
     console.log(this.props);
-    // axios.get('/ingredients.json')
-    //   .then(response => {
-    //     this.setState({ingredients: response.data})
-    //   })
-    //   .catch(error => {
-    //     this.setState({error: true})
-    //   });
   }
  
   updatePurchaseState (ingredients) {
