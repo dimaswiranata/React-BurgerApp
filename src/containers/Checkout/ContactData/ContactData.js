@@ -96,7 +96,6 @@ class ContactData extends Component {
 
   orderHandler = (event) => {
     event.preventDefault();
-    // console.log(this.props.ingredients);
     this.setState({loading: true});
     const formData = {}
     for (let formElementIdentifier in this.state.orderForm){
@@ -134,6 +133,16 @@ class ContactData extends Component {
 
     if (rules.maxLength) {
       isValid = value.length <= rules.maxLength && isValid;
+    }
+
+    if (rules.isEmail) {
+      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      isValid = pattern.test(value) && isValid
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid
     }
 
     return isValid;
@@ -175,7 +184,6 @@ class ContactData extends Component {
 
     let form = (
       <form onSubmit={this.orderHandler}>
-        {/* <Input elementType='...' elementConfig='...' value='...'/> */}
         {formElementsArray.map(formElements => (
           <Input 
             key={formElements.id}
